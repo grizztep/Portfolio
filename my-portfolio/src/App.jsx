@@ -7,6 +7,7 @@ import About from "./components/About";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 import "./styles/index.css";
+import { ChevronUp } from "lucide-react"; // Import the icon
 
 function App() {
   const [scrollPercentage, setScrollPercentage] = useState(0);
@@ -27,7 +28,7 @@ function App() {
   }, []);
 
   return (
-    <div className="bg-dirtyWhite text-black">
+    <div className="bg- text-black">
       {/* Glassmorphism Navbar */}
       <motion.nav
         className="w-full py-4 px-8 bg-black shadow-lg border-b border-white/10"
@@ -103,18 +104,28 @@ function App() {
           initial={{ opacity: 0, scale: 0 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0 }}
-          className="fixed bottom-6 right-6 w-14 h-14 bg-gray-800 text-white rounded-full flex items-center justify-center shadow-xl transition-all hover:bg-red-500"
+          whileHover={{ scale: 1.1 }}  // Button scales up slightly on hover
+          transition={{ duration: 0.3 }}
+          className="fixed bottom-6 right-6 w-14 h-14 bg-gray-800 text-white rounded-full flex items-center justify-center shadow-xl transition-all"
         >
           <div className="relative w-10 h-10 rounded-full overflow-hidden">
-            {/* Water Fill Effect */}
+            {/* First Wave Layer */}
             <motion.div 
-              className="absolute bottom-0 left-0 w-full bg-blue-500"
+              className="absolute bottom-0 left-0 w-full bg-red-500 opacity-70 wave"
               style={{ height: `${scrollPercentage}%` }}
-              initial={{ height: "0%" }}
-              animate={{ height: `${scrollPercentage}%` }}
-              transition={{ duration: 0.3 }}
+              animate={{ y: [5, -5, 5] }}  
+              transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
             />
-            <span className="absolute inset-0 flex items-center justify-center font-bold">↑</span>
+
+            {/* Second Wave Layer (slower) */}
+            <motion.div 
+              className="absolute bottom-0 left-0 w-full bg-red-400 opacity-50 wave"
+              style={{ height: `${scrollPercentage}%` }}
+              animate={{ y: [-5, 5, -5] }}  
+              transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
+            />
+
+            <ChevronUp className="absolute inset-0 m-auto text-white w-6 h-6" />
           </div>
         </motion.button>
       )}

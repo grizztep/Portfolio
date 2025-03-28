@@ -58,7 +58,7 @@ const Home = () => {
             transition={{ delay: 0.8, duration: 0.8 }}
             className="mt-4 text-lg text-gray-400"
           >
-            Frontend Developer | Crafting Exceptional Web Experiences
+            Programmer | Building Seamless Digital Solutions
           </motion.p>
 
           {/* Call to Action Buttons */}
