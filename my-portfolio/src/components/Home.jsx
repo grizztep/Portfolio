@@ -9,7 +9,7 @@ const Home = () => {
         transition={{ duration: 0.8 }}
       >
         <h1 className="text-4xl font-bold text-red-500">Welcome to My Portfolio</h1>
-        <p className="mt-4 text-lg">I'm Joseph Collantes (Otep), a Web Developer</p>
+        <p className="mt-4 text-lg">I'm Joseph Collantes</p>
       </motion.div>
     </section>
   );
