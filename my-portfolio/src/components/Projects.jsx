@@ -2,14 +2,19 @@ import { motion } from "framer-motion";
 
 const Projects = () => {
   return (
-    <section id="projects" className="h-screen flex items-center justify-center bg-lightGray text-black">
+    <section 
+      id="projects" 
+      className="h-screen flex flex-col items-center justify-center px-6 py-12 
+                 bg-gradient-to-b from-gray-800 via-gray-500 to-[#999999] text-black"
+    >
       <motion.div 
         initial={{ opacity: 0, scale: 0.9 }} 
         whileInView={{ opacity: 1, scale: 1 }} 
-        transition={{ duration: 0.8 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="text-center"
       >
-        <h2 className="text-3xl font-bold">My Projects</h2>
-        <p className="mt-4 text-lg">Here are some of my works.</p>
+        <h2 className="text-5xl font-extrabold text-gray-100 drop-shadow-md">My Projects</h2>
+        <p className="mt-4 text-lg text-gray-300">Here are some of my works.</p>
       </motion.div>
     </section>
   );
