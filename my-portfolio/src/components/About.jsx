@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { memo } from "react";
 
 // Import skill images
 import htmlImg from "../assets/skills/html.png";
@@ -15,19 +16,46 @@ import tailwindImg from "../assets/skills/tailwind.png";
 import figmaImg from "../assets/skills/figma.png";
 
 const skills = [
-  { name: "HTML", img: htmlImg, level: 90 },
-  { name: "CSS", img: cssImg, level: 90 },
-  { name: "JavaScript", img: jsImg, level: 80 },
-  { name: "PHP", img: phpImg, level: 80 },
-  { name: "Java", img: javaImg, level: 90 },
-  { name: "MySQL", img: mysqlImg, level: 90 },
-  { name: "C#", img: csharpImg, level: 60 },
-  { name: "Python", img: pythonImg, level: 90 },
-  { name: "Git", img: gitImg, level: 80 },
-  { name: "React", img: reactImg, level: 50 },
-  { name: "Tailwind", img: tailwindImg, level: 90 },
-  { name: "Figma", img: figmaImg, level: 50 },
+  { name: "HTML", img: htmlImg },
+  { name: "CSS", img: cssImg },
+  { name: "JavaScript", img: jsImg },
+  { name: "PHP", img: phpImg },
+  { name: "Java", img: javaImg },
+  { name: "MySQL", img: mysqlImg },
+  { name: "C#", img: csharpImg },
+  { name: "Python", img: pythonImg },
+  { name: "Git", img: gitImg },
+  { name: "React", img: reactImg },
+  { name: "Tailwind", img: tailwindImg },
+  { name: "Figma", img: figmaImg },
 ];
+
+// Container animation variants
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      duration: 0.3
+    }
+  }
+};
+
+// Individual skill card variants
+const skillVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "spring",
+      stiffness: 100,
+      damping: 15,
+      duration: 0.4
+    }
+  }
+};
 
 const About = () => {
   return (
@@ -41,54 +69,57 @@ const About = () => {
           initial={{ opacity: 0, y: -30 }} 
           whileInView={{ opacity: 1, y: 0 }} 
           transition={{ duration: 0.5, ease: "easeOut" }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.3 }}
           className="text-center max-w-3xl mb-16"
         >
           <h2 className="text-5xl font-extrabold text-gray-100 tracking-wide">About Me</h2>
           <p className="text-lg text-gray-300 mt-5 leading-relaxed">
-            I’m a <span className="text-red-500">BS Computer Science</span> graduate currently looking for opportunities to apply and grow my skills. I’m also open to freelance projects that match my expertise.
+            I'm a <span className="text-red-500">BS Computer Science</span> graduate currently looking for opportunities to apply and grow my skills. I'm also open to freelance projects that match my expertise.
           </p>
         </motion.div>
 
-        {/* Skills Grid - Optimized */}
-        <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8">
+        {/* Skills Grid - Optimized with staggered animation */}
+        <motion.div 
+          className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
           {skills.map((skill, index) => (
             <SkillCard key={index} skill={skill} />
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
 };
 
-const SkillCard = ({ skill }) => {
+// Memoized SkillCard component to prevent unnecessary re-renders
+const SkillCard = memo(({ skill }) => {
   return (
     <motion.div 
-      className="relative flex flex-col items-center cursor-pointer w-28 h-32 group will-change-transform"
-      whileHover={{ scale: 1.1, rotate: 1 }}
-      transition={{ type: "spring", stiffness: 150, damping: 15 }}
+      className="flex flex-col items-center cursor-pointer w-28 h-32 group"
+      variants={skillVariants}
+      whileHover={{ 
+        scale: 1.05, 
+        rotate: 1,
+        transition: { type: "spring", stiffness: 300, damping: 20 }
+      }}
+      whileTap={{ scale: 0.95 }}
     >
       {/* Image Container */}
-      <div className="relative w-full h-24 flex items-center justify-center overflow-hidden rounded-xl shadow-lg transition-all duration-300">
+      <div className="w-full h-24 flex items-center justify-center overflow-hidden rounded-xl shadow-lg transition-all duration-300">
         <img 
           src={skill.img} 
           alt={skill.name} 
           loading="lazy"
           className="w-16 h-16 object-contain"
+          style={{ willChange: 'transform' }}
         />
-
-        {/* Progress Bar on Hover */}
-        <div className="absolute bottom-0 left-0 w-full h-6 bg-gray-700 rounded-b-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 overflow-hidden">
-          <div
-            className="h-full bg-red-500 text-white text-xs font-semibold flex items-center justify-center transition-all duration-500"
-            style={{ width: `${skill.level}%` }}
-          >
-            {skill.level}%
-          </div>
-        </div>
       </div>
 
-      {/* Skill Name with Red Hover Effect */}
+      {/* Skill Name */}
       <motion.h3 
         className="mt-3 text-lg font-semibold text-gray-300 group-hover:text-red-500 transition-colors duration-300 text-center"
       >
@@ -96,6 +127,8 @@ const SkillCard = ({ skill }) => {
       </motion.h3>
     </motion.div>
   );
-};
+});
+
+SkillCard.displayName = 'SkillCard';
 
 export default About;

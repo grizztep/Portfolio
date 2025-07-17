@@ -35,7 +35,7 @@ function App() {
       >
         <div className="container mx-auto flex justify-between items-center">
           {/* Logo */}
-          <a href="/" className="text-xl font-bold text-red-500">Collantes.dev</a>
+          <a href="/" className="text-xl font-bold text-red-500">collantes.csdev</a>
 
           {/* Desktop Navigation Links */}
           <div className="hidden md:flex space-x-6">
