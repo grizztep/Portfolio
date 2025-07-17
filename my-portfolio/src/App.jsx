@@ -14,7 +14,7 @@ function App() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    document.title = "Grizz | Portfolio";
+    document.title = "Collantes | Portfolio";
 
     const handleScroll = () => {
       const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
@@ -35,7 +35,7 @@ function App() {
       >
         <div className="container mx-auto flex justify-between items-center">
           {/* Logo */}
-          <a href="/" className="text-xl font-bold text-red-500">Otep.dev</a>
+          <a href="/" className="text-xl font-bold text-red-500">Collantes.dev</a>
 
           {/* Desktop Navigation Links */}
           <div className="hidden md:flex space-x-6">

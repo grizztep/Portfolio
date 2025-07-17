@@ -58,7 +58,7 @@ const Home = () => {
             transition={{ delay: 0.8, duration: 0.8 }}
             className="mt-4 text-lg text-gray-400"
           >
-            Programmer | Building Seamless Digital Solutions
+            Junior Developer | Building Seamless Digital Solutions
           </motion.p>
 
           {/* Call to Action Buttons */}
