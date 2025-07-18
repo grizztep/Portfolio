@@ -14,7 +14,7 @@ const Projects = () => {
         className="text-center"
       >
         <h2 className="text-5xl font-extrabold text-gray-100 drop-shadow-md">My Projects</h2>
-        <p className="mt-4 text-lg text-gray-300">Here are some of my works.</p>
+        <p className="mt-4 text-lg text-gray-300">I’m currently in the process of gathering the source codes for my past projects. They will be displayed here once everything is organized.</p>
       </motion.div>
     </section>
   );
