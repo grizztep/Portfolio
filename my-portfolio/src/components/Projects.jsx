@@ -11,25 +11,25 @@ const projectList = [
     id: 1,
     title: "Non-Monetary Remuneration Monitoring",
     image: project1,
-    description: "A website manage overtime requests and compensatory time-off balances. Automated the generation of certificates of compensatory time, streamlining HR processes at DOST-FPRDI.",
-    technologies: ["PHP", "Bootsrap", "Laravel", "MySql"],
+    description: "A web-based system designed to manage employee overtime records and compensatory time-off (CTO) balances. It automates the issuance of CTO certificates, significantly reducing manual HR workload and enhancing the accuracy and efficiency of HR operations at DOST-FPRDI.",
+    technologies: ["PHP", "Bootstrap", "Laravel", "MySQL"],
     category: "Web Application"
   },
   {
     id: 2,
     title: "Early Warning System",
     image: project2,
-    description: "A website incorporating a regression model trained on five years of dengue case data and correlated datasets to forecast outbreaks. Integrated an SMS alert system to provide timely warnings for early intervention.",
+    description: "A predictive web platform that utilizes a regression model trained on five years of historical dengue data, alongside environmental factors, to forecast potential outbreaks. Integrated with an SMS alert system to deliver real-time notifications, enabling early response and preventive action.",
     technologies: ["Python", "Flask", "Firebase"],
-    category: "Full Stack"
+    category: "Web Application"
   },
   {
     id: 3,
-    title: "Catering Reservation",
+    title: "Catering Reservation System",
     image: project3,
-    description: "The system facilitates the reservation and management of catering service requests.",
-    technologies: ["Java", "Netbeans", "MySql"],
-    category: "Platform"
+    description: "A desktop application for managing catering service reservations. It simplifies booking workflows, tracks orders, and maintains organized records, offering a streamlined solution for both customers and service providers.",
+    technologies: ["Java", "NetBeans", "MySQL"],
+    category: "Desktop Application"
   },
 ];
 
