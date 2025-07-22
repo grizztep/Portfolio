@@ -69,7 +69,7 @@ const About = () => {
           initial={{ opacity: 0, y: -30 }} 
           whileInView={{ opacity: 1, y: 0 }} 
           transition={{ duration: 0.5, ease: "easeOut" }}
-          viewport={{ once: false, amount: 0.3 }} // animate every time
+          viewport={{ once: true, amount: 0.3 }}
           className="text-center max-w-3xl mb-16"
         >
           <h2 className="text-5xl font-extrabold text-gray-100 tracking-wide">About Me</h2>
@@ -84,7 +84,7 @@ const About = () => {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: false, amount: 0.2 }} // animate every time in view
+          viewport={{ once: true, amount: 0.2 }}
         >
           {skills.map((skill, index) => (
             <SkillCard key={index} skill={skill} />
